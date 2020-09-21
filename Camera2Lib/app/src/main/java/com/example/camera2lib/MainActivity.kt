@@ -2,8 +2,10 @@ package com.example.camera2lib
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import com.example.camera2lib.cameraController.CameraParams
 
 class MainActivity : AppCompatActivity() {
     private lateinit var container: FrameLayout
@@ -35,5 +37,14 @@ class MainActivity : AppCompatActivity() {
         const val ANIMATION_FAST_MILLIS = 50L
         const val ANIMATION_SLOW_MILLIS = 100L
         private const val IMMERSIVE_FLAG_TIMEOUT = 500L
+
+        /** Variable for cameras */
+        var numCameras: Int = 0
+        var params: MutableMap<String, CameraParams> = mutableMapOf<String, CameraParams>()
+
+        /** Log for debug */
+        fun log(function: String, text: String){
+            Log.d("Camera2Lib_Debug", "In $function, $text")
+        }
     }
 }

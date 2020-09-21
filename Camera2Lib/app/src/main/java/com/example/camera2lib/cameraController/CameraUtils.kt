@@ -1,5 +1,52 @@
 package com.example.camera2lib.cameraController
 
-fun initializeCamera(){
+import android.hardware.camera2.CameraAccessException
+import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraManager
+import androidx.appcompat.app.AppCompatActivity
+import com.example.camera2lib.MainActivity
 
+fun initializeCamera(activity: MainActivity){
+    val manager = activity.getSystemService(AppCompatActivity.CAMERA_SERVICE) as CameraManager
+
+    /**
+     * HAL3 적용 이후 스마트폰에 여러 카메라가 장착된 경우
+     * 여러개의 camera device 를 가지고 있음.
+     * 때문에 이를 원하는 대로 사용하기 위해 미리 로드해놓음.
+     */
+    try{
+        MainActivity.numCameras = manager.cameraIdList.size
+        for(cameraId in manager.cameraIdList){
+            val id: String = cameraId
+            MainActivity.params[cameraId] = initializeParams(manager, cameraId)
+        }
+
+
+    } catch (accessError : CameraAccessException){
+        accessError.printStackTrace()
+    }
+}
+
+fun initializeParams(manager: CameraManager, cameraId: String) : CameraParams{
+    val tempCameraParam = CameraParams().apply{
+        val cameraChars = manager.getCameraCharacteristics(cameraId)
+        val scaleMap = cameraChars.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+        val cameraCapabilities = cameraChars.get(CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES)
+        if(cameraCapabilities != null){
+            for(cap in cameraCapabilities){
+                when(cap){
+                    CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_LOGICAL_MULTI_CAMERA -> hasMulti = true
+                    CameraCharacteristics.REQUEST_AVAILABLE_CAPABILITIES_DEPTH_OUTPUT -> isDepth = true
+                }
+            }
+        }
+        id = cameraId
+        isOpen = false
+        characteristics = cameraChars
+
+        focalLength = cameraChars.get(CameraCharacteristics.LENS_INFO_AVAILABLE_FOCAL_LENGTHS)!!
+        apertures = cameraChars.get(CameraCharacteristics.LENS_INFO_AVAILABLE_APERTURES)!!
+        physicalCameras = cameraChars.physicalCameraIds
+    }
+    return tempCameraParam
 }
