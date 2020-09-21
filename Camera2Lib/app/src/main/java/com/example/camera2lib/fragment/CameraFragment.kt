@@ -1,5 +1,7 @@
 package com.example.camera2lib.fragment
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -12,7 +14,12 @@ class CameraFragment : Fragment(){
     private val navController: NavController by lazy{
         Navigation.findNavController(requireActivity(), R.id.fragment_container)
     }
-    // TODO:
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+    }
     /**
      * 1. Camera Device setting(RGB, DEPTH)
      * 2. Surface setting - recorder surface for record video(RGB, DEPTH)
