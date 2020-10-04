@@ -1,4 +1,4 @@
-package com.example.camera2lib.fragment
+package tristar.example.camera2lib.fragment
 
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraCharacteristics
@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.camera2lib.MainActivity
+import tristar.example.camera2lib.MainActivity
 import com.example.camera2lib.R
-import com.example.camera2lib.cameraController.CameraParams
+import tristar.example.camera2lib.cameraController.CameraParams
 
 
 class CameraInitFragment : Fragment() {
@@ -20,7 +20,8 @@ class CameraInitFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val activity:MainActivity = MainActivity()
+        val activity: MainActivity =
+            MainActivity()
         initializeCamera(activity)
     }
 

@@ -1,7 +1,7 @@
-package com.example.camera2lib.cameraController.cameraCallback
+package tristar.example.camera2lib.cameraController.cameraCallback
 
 import android.hardware.camera2.CameraCaptureSession
-import com.example.camera2lib.MainActivity
+import tristar.example.camera2lib.MainActivity
 
 class PreviewSessionCallback(val activity: MainActivity) : CameraCaptureSession.StateCallback() {
     override fun onConfigured(session: CameraCaptureSession) {

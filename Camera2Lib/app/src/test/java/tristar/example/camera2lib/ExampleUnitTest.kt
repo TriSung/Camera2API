@@ -1,4 +1,4 @@
-package com.example.camera2lib
+package tristar.example.camera2lib
 
 import org.junit.Test
 

@@ -1,8 +1,8 @@
-package com.example.camera2lib.cameraController.cameraCallback
+package tristar.example.camera2lib.cameraController.cameraCallback
 
 import android.hardware.camera2.*
 import android.view.Surface
-import com.example.camera2lib.MainActivity
+import tristar.example.camera2lib.MainActivity
 
 class CaptureSessionCallback(val activity: MainActivity) : CameraCaptureSession.CaptureCallback() {
     override fun onCaptureStarted(

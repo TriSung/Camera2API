@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/permissionFragment"
-        android:name="com.example.camera2lib.fragment.PermissionFragment"
+        android:name="tristar.example.camera2lib.fragment.PermissionFragment"
         android:label="PermissionFragment" >
         <action
             android:id="@+id/action_permissionFragment_to_cameraInitFragment"
@@ -15,14 +15,14 @@
 
     <fragment
         android:id="@+id/cameraFragment"
-        android:name="com.example.camera2lib.fragment.CameraFragment"
+        android:name="tristar.example.camera2lib.fragment.CameraFragment"
         android:label="CameraFragment" >
 
     </fragment>
 
     <fragment
         android:id="@+id/cameraInitFragment"
-        android:name="com.example.camera2lib.fragment.CameraInitFragment"
+        android:name="tristar.example.camera2lib.fragment.CameraInitFragment"
         android:label="CameraInitFragment" >
         <action
             android:id="@+id/action_cameraInitFragment_to_cameraFragment"

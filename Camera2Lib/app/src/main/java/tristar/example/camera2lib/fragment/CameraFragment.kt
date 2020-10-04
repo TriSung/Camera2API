@@ -1,11 +1,10 @@
-package com.example.camera2lib.fragment
+package tristar.example.camera2lib.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
 import com.example.camera2lib.R
 
 class CameraFragment : Fragment(){

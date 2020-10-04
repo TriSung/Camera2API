@@ -1,7 +1,7 @@
-package com.example.camera2lib.cameraController.cameraCallback
+package tristar.example.camera2lib.cameraController.cameraCallback
 
 import android.hardware.camera2.CameraDevice
-import com.example.camera2lib.MainActivity
+import tristar.example.camera2lib.MainActivity
 
 class CameraStateCallback(internal var activity: MainActivity) : CameraDevice.StateCallback() {
     override fun onOpened(camera: CameraDevice) {

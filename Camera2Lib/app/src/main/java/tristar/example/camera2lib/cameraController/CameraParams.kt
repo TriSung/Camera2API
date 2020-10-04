@@ -1,7 +1,6 @@
-package com.example.camera2lib.cameraController
+package tristar.example.camera2lib.cameraController
 
 import android.hardware.camera2.CameraCharacteristics
-import android.hardware.camera2.CameraDevice
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Size

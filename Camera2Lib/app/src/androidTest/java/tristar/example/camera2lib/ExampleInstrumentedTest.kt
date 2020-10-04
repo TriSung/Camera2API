@@ -1,4 +1,4 @@
-package com.example.camera2lib
+package tristar.example.camera2lib
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

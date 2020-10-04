@@ -1,4 +1,4 @@
-package com.example.camera2lib.fragment
+package tristar.example.camera2lib.fragment
 
 import android.Manifest
 import android.content.Context
@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.camera2lib.R
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 private const val PERMISSIONS_REQUEST_CODE = 10
 private val PERMISSIONS_REQUIRED = arrayOf(
@@ -22,7 +21,10 @@ class PermissionFragment : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(hasPermissions(requireContext())){
+        if(hasPermissions(
+                requireContext()
+            )
+        ){
             // permission already granted
             // fragment change, 나중에 실제 앱 구성할땐 초기 화면으로 가게 세팅하면 됨.
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
@@ -31,7 +33,10 @@ class PermissionFragment : Fragment(){
         }
         else{
             // require permissions about not granted
-            requestPermissions(PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
+            requestPermissions(
+                PERMISSIONS_REQUIRED,
+                PERMISSIONS_REQUEST_CODE
+            )
         }
     }
 

@@ -1,11 +1,12 @@
-package com.example.camera2lib
+package tristar.example.camera2lib
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
-import com.example.camera2lib.cameraController.CameraParams
+import tristar.example.camera2lib.cameraController.CameraParams
+import com.example.camera2lib.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var container: FrameLayout
@@ -21,8 +22,11 @@ class MainActivity : AppCompatActivity() {
         // Before setting full screen flags, we must wait a bit to let UI settle; otherwise, we may
         // be trying to set app to immersive mode before it's ready and the flags do not stick
         container.postDelayed({
-            container.systemUiVisibility = FLAGS_FULLSCREEN
-        }, IMMERSIVE_FLAG_TIMEOUT)
+            container.systemUiVisibility =
+                FLAGS_FULLSCREEN
+        },
+            IMMERSIVE_FLAG_TIMEOUT
+        )
     }
 
     companion object {
