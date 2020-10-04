@@ -22,10 +22,11 @@ class CameraInitFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val activity: MainActivity =
             MainActivity()
-        initializeCamera(activity)
+        //initializeCamera(activity)
+        Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
+            CameraInitFragmentDirections.actionCameraInitFragmentToCameraFragment()
+        )
     }
-
-
     private fun initializeCamera(activity: MainActivity){
         val manager = activity.getSystemService(AppCompatActivity.CAMERA_SERVICE) as CameraManager
 

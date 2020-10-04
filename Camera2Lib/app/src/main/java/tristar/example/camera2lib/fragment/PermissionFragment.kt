@@ -21,14 +21,11 @@ class PermissionFragment : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(hasPermissions(
-                requireContext()
-            )
-        ){
+        if(hasPermissions(requireContext())){
             // permission already granted
             // fragment change, 나중에 실제 앱 구성할땐 초기 화면으로 가게 세팅하면 됨.
             Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
-                PermissionFragmentDirections.actionPermissionFragmentToCameraFragment()
+                PermissionFragmentDirections.actionPermissionFragmentToCameraInitFragment()
             )
         }
         else{
@@ -51,7 +48,7 @@ class PermissionFragment : Fragment(){
                 // fragment change
                 // 위에서와 마찬가지로 실제 앱을 구성할땐 초기 화면으로 가도록
                 Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
-                    PermissionFragmentDirections.actionPermissionFragmentToCameraFragment()
+                    PermissionFragmentDirections.actionPermissionFragmentToCameraInitFragment()
                 )
             }
             else{
