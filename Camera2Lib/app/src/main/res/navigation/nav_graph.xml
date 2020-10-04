@@ -9,10 +9,8 @@
         android:name="com.example.camera2lib.fragment.PermissionFragment"
         android:label="PermissionFragment" >
         <action
-            android:id="@+id/action_permissionFragment_to_cameraFragment"
-            app:destination="@id/cameraFragment"
-            app:popUpTo="@id/permissionFragment"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_permissionFragment_to_cameraInitFragment"
+            app:destination="@id/cameraInitFragment" />
     </fragment>
 
     <fragment
@@ -21,4 +19,16 @@
         android:label="CameraFragment" >
 
     </fragment>
+
+    <fragment
+        android:id="@+id/cameraInitFragment"
+        android:name="com.example.camera2lib.fragment.CameraInitFragment"
+        android:label="CameraInitFragment" >
+        <action
+            android:id="@+id/action_cameraInitFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+
+
+    </fragment>
+
 </navigation>

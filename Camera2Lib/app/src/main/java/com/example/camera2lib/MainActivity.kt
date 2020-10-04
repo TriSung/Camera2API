@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         /** Variable for cameras */
         var numCameras: Int = 0
-        var params: MutableMap<String, CameraParams> = mutableMapOf<String, CameraParams>()
+        lateinit var params: HashMap<String, CameraParams>
 
         /** Log for debug */
         fun log(function: String, text: String){
