@@ -1,9 +1,13 @@
 package tristar.example.camera2lib.cameraController
 
+import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraDevice
+import android.hardware.camera2.CameraManager
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.Size
+import androidx.lifecycle.ViewModel
 
 class CameraParams{
     lateinit var id: String // id is non-nullable variable
@@ -13,6 +17,7 @@ class CameraParams{
 
     internal var isOpen: Boolean = false // check camera device is open
     lateinit var characteristics: CameraCharacteristics // camera characteristics.
+    lateinit var manager: CameraManager
         internal var isDepth: Boolean = false // check this camera is depth camera, if false: RGB
         lateinit var focalLength: FloatArray // check focal length for image processing
         lateinit var apertures: FloatArray // check aperture for image processing
@@ -23,4 +28,7 @@ class CameraParams{
     /** these variables are not used unconditionally */
     internal var backgroundThread: HandlerThread? = null
     internal var backgroundHandler: Handler? = null // Thread & Handler for background tasking
+
+    internal var camera: CameraDevice? = null
+    internal var session: CameraCaptureSession? = null
 }

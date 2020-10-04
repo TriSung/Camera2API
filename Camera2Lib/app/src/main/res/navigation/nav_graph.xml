@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/permissionFragment">
 
@@ -8,6 +9,7 @@
         android:id="@+id/permissionFragment"
         android:name="tristar.example.camera2lib.fragment.PermissionFragment"
         android:label="PermissionFragment" >
+
         <action
             android:id="@+id/action_permissionFragment_to_cameraInitFragment"
             app:destination="@id/cameraInitFragment" />
@@ -16,7 +18,8 @@
     <fragment
         android:id="@+id/cameraFragment"
         android:name="tristar.example.camera2lib.fragment.CameraFragment"
-        android:label="CameraFragment" >
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
 
     </fragment>
 
@@ -30,7 +33,6 @@
         <action
             android:id="@+id/action_cameraInitFragment_to_cameraFragment2"
             app:destination="@id/cameraFragment" />
-
 
     </fragment>
 

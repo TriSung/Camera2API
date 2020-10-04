@@ -13,7 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/button_split"
+        app:layout_constraintBottom_toTopOf="@+id/button_split"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,19 +33,36 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.65" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35"/>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:text="quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_split"
+        app:layout_constraintEnd_toEndOf="@+id/back" />
+
     <Button
         android:id="@+id/btn_capture"
         android:text="Capture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="@+id/back"
         app:layout_constraintTop_toTopOf="@id/button_split"
         app:layout_constraintEnd_toEndOf="@id/function_split"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
-        android:id="@+id/btn_depth_view"
-        android:text="Depth View"
+        android:id="@+id/btn_mode_change"
+        android:text="Change mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/button_split"

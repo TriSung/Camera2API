@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.camera2lib.R
+import tristar.example.camera2lib.MainActivity
 
 private const val PERMISSIONS_REQUEST_CODE = 10
 private val PERMISSIONS_REQUIRED = arrayOf(
@@ -18,6 +19,9 @@ private val PERMISSIONS_REQUIRED = arrayOf(
 )
 
 class PermissionFragment : Fragment(){
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

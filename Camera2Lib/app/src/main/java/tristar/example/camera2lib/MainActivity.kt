@@ -5,16 +5,28 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import tristar.example.camera2lib.cameraController.CameraParams
 import com.example.camera2lib.R
+import tristar.example.camera2lib.cameraController.CamViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var container: FrameLayout
 
+    private val camViewModel: CamViewModel by viewModels{
+        object : ViewModelProvider.Factory{
+            override fun <T: ViewModel?> create(modelClass: Class<T>) : T =
+                CamViewModel() as T
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         container = findViewById(R.id.fragment_container)
+        params = camViewModel.getCameraParams()
+
     }
 
     override fun onResume() {
@@ -43,6 +55,8 @@ class MainActivity : AppCompatActivity() {
         private const val IMMERSIVE_FLAG_TIMEOUT = 500L
 
         /** Variable for cameras */
+
+
         var numCameras: Int = 0
         lateinit var params: HashMap<String, CameraParams>
 
@@ -50,5 +64,7 @@ class MainActivity : AppCompatActivity() {
         fun log(function: String, text: String){
             Log.d("Camera2Lib_Debug", "In $function, $text")
         }
+
+
     }
 }
