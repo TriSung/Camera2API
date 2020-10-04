@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.util.Size
 import androidx.lifecycle.ViewModel
+import tristar.example.camera2lib.utils.AutoFitSurfaceView
 
 class CameraParams{
     lateinit var id: String // id is non-nullable variable
@@ -26,9 +27,13 @@ class CameraParams{
         internal var maxSize: Size = Size(-1,-1)
 
     /** these variables are not used unconditionally */
-    internal var backgroundThread: HandlerThread? = null
-    internal var backgroundHandler: Handler? = null // Thread & Handler for background tasking
+    internal var cameraThread: HandlerThread? = null
+    internal var cameraHandler: Handler? = null // Thread & Handler for background tasking
 
-    internal var camera: CameraDevice? = null
+    internal var imageReaderThread: HandlerThread? = null
+    internal var imageReaderHandler: Handler? = null
+
+    internal var previewSurface: AutoFitSurfaceView? = null
+
     internal var session: CameraCaptureSession? = null
 }

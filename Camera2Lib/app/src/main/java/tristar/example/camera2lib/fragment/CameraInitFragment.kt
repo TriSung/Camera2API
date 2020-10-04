@@ -5,15 +5,23 @@ import android.graphics.ImageFormat
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
+import android.media.MediaRecorder
 import android.os.Bundle
 import android.util.Size
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import tristar.example.camera2lib.MainActivity
 import com.example.camera2lib.R
 import tristar.example.camera2lib.cameraController.CameraParams
+import tristar.example.camera2lib.utils.GenericListAdapter
 import java.util.*
 
 
@@ -22,14 +30,50 @@ class CameraInitFragment : Fragment() {
         Navigation.findNavController(requireActivity(), R.id.fragment_container)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initializeCamera()
-        Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
-            CameraInitFragmentDirections.actionCameraInitFragmentToCameraFragment()
-        )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? = RecyclerView(requireContext())
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view as RecyclerView
+        view.apply{
+            layoutManager = LinearLayoutManager(requireContext())
+
+            val layoutId = android.R.layout.simple_list_item_1
+            val cameraList: MutableList<FormatItem> = mutableListOf()
+            cameraList.add(FormatItem("Facing_Still", "1", ImageFormat.YUV_420_888))
+            cameraList.add(FormatItem("Back_Still", "0", ImageFormat.YUV_420_888))
+            cameraList.add(FormatItem("Facing_Video", "1", MediaRecorder.OutputFormat.MPEG_4))
+            cameraList.add(FormatItem("Back_Video", "0", MediaRecorder.OutputFormat.MPEG_4))
+            cameraList.add(FormatItem("Back_Depth", "4", -1))
+            adapter = GenericListAdapter(cameraList, itemLayoutId = layoutId){ view, item, _ ->
+                view.findViewById<TextView>(android.R.id.text1).text = item.title
+                view.setOnClickListener{
+                    if(item.title == "Facing_Still" || item.title == "Back_Still"){
+
+                    }
+                    else if(item.title == "Facing_Video" || item.title == "Back_Video"){
+
+                    }
+                    else{
+
+                    }
+                }
+            }
+        }
+    }
+
+    companion object{
+        private data class FormatItem(val title: String, val cameraId: String, val format: Int)
     }
     private fun initializeCamera(){
         val context = requireContext().applicationContext

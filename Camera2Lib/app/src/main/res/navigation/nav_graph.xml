@@ -16,24 +16,42 @@
     </fragment>
 
     <fragment
-        android:id="@+id/cameraFragment"
-        android:name="tristar.example.camera2lib.fragment.CameraFragment"
-        android:label="CameraFragment"
-        tools:layout="@layout/fragment_camera">
-
-    </fragment>
-
-    <fragment
         android:id="@+id/cameraInitFragment"
         android:name="tristar.example.camera2lib.fragment.CameraInitFragment"
         android:label="CameraInitFragment" >
         <action
-            android:id="@+id/action_cameraInitFragment_to_cameraFragment"
-            app:destination="@id/cameraFragment" />
+            android:id="@+id/action_cameraInitFragment_to_stillPictureFragment"
+            app:destination="@id/stillPictureFragment" />
         <action
-            android:id="@+id/action_cameraInitFragment_to_cameraFragment2"
-            app:destination="@id/cameraFragment" />
-
+            android:id="@+id/action_cameraInitFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+        <action
+            android:id="@+id/action_cameraInitFragment_to_depthFragment"
+            app:destination="@id/depthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stillPictureFragment"
+        android:name="tristar.example.camera2lib.fragment.StillPictureFragment"
+        android:label="StillPictureFragment" >
+        <action
+            android:id="@+id/action_stillPictureFragment_to_cameraInitFragment"
+            app:destination="@id/cameraInitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="tristar.example.camera2lib.fragment.VideoFragment"
+        android:label="VideoFragment" >
+        <action
+            android:id="@+id/action_videoFragment_to_cameraInitFragment"
+            app:destination="@id/cameraInitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/depthFragment"
+        android:name="tristar.example.camera2lib.fragment.DepthFragment"
+        android:label="DepthFragment" >
+        <action
+            android:id="@+id/action_depthFragment_to_cameraInitFragment"
+            app:destination="@id/cameraInitFragment" />
     </fragment>
 
 </navigation>
