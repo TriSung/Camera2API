@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         var numCameras: Int = 0
         lateinit var params: HashMap<String, CameraParams>
+        var selectedCameraId: String = "0"
 
         /** Log for debug */
         fun log(function: String, text: String){

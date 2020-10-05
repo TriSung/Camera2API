@@ -57,15 +57,20 @@ class CameraInitFragment : Fragment() {
             cameraList.add(FormatItem("Back_Depth", "4", -1))
             adapter = GenericListAdapter(cameraList, itemLayoutId = layoutId){ view, item, _ ->
                 view.findViewById<TextView>(android.R.id.text1).text = item.title
-                view.setOnClickListener{
-                    if(item.title == "Facing_Still" || item.title == "Back_Still"){
 
+                view.setOnClickListener{
+                    MainActivity.selectedCameraId = item.cameraId
+                    if(item.title == "Facing_Still" || item.title == "Back_Still"){
+                        Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                            .navigate(CameraInitFragmentDirections.actionCameraInitFragmentToStillPictureFragment())
                     }
                     else if(item.title == "Facing_Video" || item.title == "Back_Video"){
-
+                        Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                            .navigate(CameraInitFragmentDirections.actionCameraInitFragmentToVideoFragment())
                     }
                     else{
-
+                        Navigation.findNavController(requireActivity(), R.id.fragment_container)
+                            .navigate(CameraInitFragmentDirections.actionCameraInitFragmentToDepthFragment())
                     }
                 }
             }

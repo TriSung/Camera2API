@@ -33,25 +33,23 @@
         android:id="@+id/stillPictureFragment"
         android:name="tristar.example.camera2lib.fragment.StillPictureFragment"
         android:label="StillPictureFragment" >
-        <action
-            android:id="@+id/action_stillPictureFragment_to_cameraInitFragment"
-            app:destination="@id/cameraInitFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/videoFragment"
         android:name="tristar.example.camera2lib.fragment.VideoFragment"
         android:label="VideoFragment" >
-        <action
-            android:id="@+id/action_videoFragment_to_cameraInitFragment"
-            app:destination="@id/cameraInitFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/depthFragment"
         android:name="tristar.example.camera2lib.fragment.DepthFragment"
-        android:label="DepthFragment" >
+        android:label="DepthFragment"
+        >
+
         <action
-            android:id="@+id/action_depthFragment_to_cameraInitFragment"
-            app:destination="@id/cameraInitFragment" />
+            android:id="@+id/action_depthFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
     </fragment>
 
 </navigation>
